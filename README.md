@@ -23,6 +23,10 @@ Create Pull Request action will:
 - [Examples](docs/examples.md)
 - [Updating to v5](docs/updating.md)
 
+### Requirements:
+
+* NodeJS 20+
+
 ## Usage
 
 ```yml

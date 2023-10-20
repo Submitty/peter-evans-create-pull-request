@@ -1,28 +1,32 @@
 # Examples
 
-- [Use case: Create a pull request to update X on push](#use-case-create-a-pull-request-to-update-x-on-push)
-  - [Update project authors](#update-project-authors)
-  - [Keep a branch up-to-date with another](#keep-a-branch-up-to-date-with-another)
-- [Use case: Create a pull request to update X on release](#use-case-create-a-pull-request-to-update-x-on-release)
-  - [Update changelog](#update-changelog)
-- [Use case: Create a pull request to update X periodically](#use-case-create-a-pull-request-to-update-x-periodically)
-  - [Update NPM dependencies](#update-npm-dependencies)
-  - [Update Gradle dependencies](#update-gradle-dependencies)
-  - [Update Cargo dependencies](#update-cargo-dependencies)
-  - [Update SwaggerUI for GitHub Pages](#update-swaggerui-for-github-pages)
-  - [Keep a fork up-to-date with its upstream](#keep-a-fork-up-to-date-with-its-upstream)
-  - [Spider and download a website](#spider-and-download-a-website)
-- [Use case: Create a pull request to update X by calling the GitHub API](#use-case-create-a-pull-request-to-update-x-by-calling-the-github-api)
-  - [Call the GitHub API from an external service](#call-the-github-api-from-an-external-service)
-  - [Call the GitHub API from another GitHub Actions workflow](#call-the-github-api-from-another-github-actions-workflow)
-- [Use case: Create a pull request to modify/fix pull requests](#use-case-create-a-pull-request-to-modifyfix-pull-requests)
-  - [autopep8](#autopep8)
-- [Misc workflow tips](#misc-workflow-tips)
-  - [Filtering push events](#filtering-push-events)
-  - [Bypassing git hooks](#bypassing-git-hooks)
-  - [Dynamic configuration using variables](#dynamic-configuration-using-variables)
-  - [Using a markdown template](#using-a-markdown-template)
-  - [Debugging GitHub Actions](#debugging-github-actions)
+- [Examples](#examples)
+  - [Use case: Create a pull request to update X on push](#use-case-create-a-pull-request-to-update-x-on-push)
+    - [Update project authors](#update-project-authors)
+    - [Keep a branch up-to-date with another](#keep-a-branch-up-to-date-with-another)
+  - [Use case: Create a pull request to update X on release](#use-case-create-a-pull-request-to-update-x-on-release)
+    - [Update changelog](#update-changelog)
+  - [Use case: Create a pull request to update X periodically](#use-case-create-a-pull-request-to-update-x-periodically)
+    - [Update NPM dependencies](#update-npm-dependencies)
+    - [Update Gradle dependencies](#update-gradle-dependencies)
+    - [Update Cargo dependencies](#update-cargo-dependencies)
+    - [Update SwaggerUI for GitHub Pages](#update-swaggerui-for-github-pages)
+    - [Keep a fork up-to-date with its upstream](#keep-a-fork-up-to-date-with-its-upstream)
+    - [Spider and download a website](#spider-and-download-a-website)
+  - [Use case: Create a pull request to update X by calling the GitHub API](#use-case-create-a-pull-request-to-update-x-by-calling-the-github-api)
+    - [Call the GitHub API from an external service](#call-the-github-api-from-an-external-service)
+    - [Call the GitHub API from another GitHub Actions workflow](#call-the-github-api-from-another-github-actions-workflow)
+  - [Use case: Create a pull request to modify/fix pull requests](#use-case-create-a-pull-request-to-modifyfix-pull-requests)
+    - [autopep8](#autopep8)
+  - [Misc workflow tips](#misc-workflow-tips)
+    - [Filtering push events](#filtering-push-events)
+    - [Bypassing git hooks](#bypassing-git-hooks)
+    - [Dynamic configuration using variables](#dynamic-configuration-using-variables)
+    - [Using a markdown template](#using-a-markdown-template)
+    - [Debugging GitHub Actions](#debugging-github-actions)
+      - [Runner Diagnostic Logging](#runner-diagnostic-logging)
+      - [Step Debug Logging](#step-debug-logging)
+      - [Output Various Contexts](#output-various-contexts)
 
 
 ## Use case: Create a pull request to update X on push
@@ -148,7 +152,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: 20.x
       - name: Update dependencies
         run: |
           npx -p npm-check-updates ncu -u
@@ -184,7 +188,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 20.x
       - run: npm ci
       - run: npm run test
       - run: npm run build
